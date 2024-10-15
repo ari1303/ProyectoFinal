@@ -175,7 +175,31 @@ public class ActualizarProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        BaseDatos bd = new BaseDatos();
+            // cnx: objeto que representa la conexión a la BD
+            Connection cnx = bd.getConexion();
+            
+            // Obtenemos los datos de los textField
+            String nombre = txtNombreProducto.getText();
+            int codigo = Integer.parseInt(txtCodigoP.getText());
+            float precio = Float.parseFloat(txtPrecio.getText());
+            int existencia = Integer.parseInt(txtExistencia.getText());
+            String calificacion = txtCalificacioProd.getText();
+            String marca = txtMarca.getText();
+            
+            // Creamos la sentencia SQL
+            String sql = "Update productos Set null, '" + nombre + "', " + precio + ", " + existencia + ", '" + calificacion + "', '" + marca + "' Where codigo = " + codigo;
+            
+            System.out.println(sql);
+            
+            try {
+                Statement st = cnx.createStatement();
+                // Insertar en la base de datos
+                int resultado = st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(rootPane, "Producto creado con exito");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane, "Error al crear Producto", "Importante", JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
 

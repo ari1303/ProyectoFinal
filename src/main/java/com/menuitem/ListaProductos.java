@@ -14,10 +14,7 @@ public class ListaProductos extends javax.swing.JInternalFrame {
      * Creates new form ListaProductos
      */
     public ListaProductos() {
-        initComponents();
-        
-        
-        
+        initComponents();  
     }
 
     /**
@@ -150,7 +147,7 @@ public class ListaProductos extends javax.swing.JInternalFrame {
 
                 // Recorrer ResultSet y agregar filas
                 while (rs.next()) {
-                    int idproducto = rs.getInt("idproducto");
+                    int idproducto = rs.getInt("idproductos");
                     String nombre = rs.getString("nombre_producto");
                     int codigo = rs.getInt("codigo");
                     float precio = rs.getFloat("precio");

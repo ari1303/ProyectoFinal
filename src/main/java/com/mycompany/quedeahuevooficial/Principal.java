@@ -179,7 +179,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
-        // TODO add your handling code here:
+        CrearUsuario crearusuario = new CrearUsuario();
+        crearusuario.setVisible(true);
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     /**

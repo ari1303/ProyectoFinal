@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.quedeahuevooficial;
 
 import com.back.BaseDatos;
@@ -172,6 +168,8 @@ public class Principal extends javax.swing.JFrame {
         
             if (resultado.next()) {  // Verifica si se encontró una coincidencia
                 JOptionPane.showMessageDialog(rootPane, "¡Login exitoso!");
+                Menu menu = new Menu();
+                menu.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
             }

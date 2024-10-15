@@ -1,5 +1,10 @@
 package com.mycompany.quedeahuevooficial;
 
+import com.back.BaseDatos;
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aries
@@ -31,8 +36,8 @@ public class CrearUsuario extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        txtNombreC = new javax.swing.JTextField();
         pwCrear = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
 
@@ -95,11 +100,11 @@ public class CrearUsuario extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel1.setText("Crear Usuario");
 
-        jTextField4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuario"));
+        txtUsuario.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        txtUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuario"));
 
-        jTextField5.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jTextField5.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre"));
+        txtNombreC.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        txtNombreC.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre"));
 
         pwCrear.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         pwCrear.setBorder(javax.swing.BorderFactory.createTitledBorder("Password"));
@@ -129,8 +134,8 @@ public class CrearUsuario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                            .addComponent(jTextField4)
+                            .addComponent(txtNombreC, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(txtUsuario)
                             .addComponent(pwCrear))
                         .addGap(17, 17, 17))))
         );
@@ -143,9 +148,9 @@ public class CrearUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pwCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -173,12 +178,12 @@ public class CrearUsuario extends javax.swing.JFrame {
         Connection cnx = bd.getConexion();
         
         // Obtenemos los datos de los textField
-        String nombre = txtNombre.getText();
+        String nombre = txtNombreC.getText();
         String usuario = txtUsuario.getText();
-        String contrasena = new String(pwCrear.getPassword());
+        String contraseña = new String(pwCrear.getPassword());
         
         // Creamos la sentencia SQL
-        String sql = "INSERT INTO usuarios (id, nombre, usuario, contrasena) VALUES (null, '" + nombre_apellido + "', '" + nombre_usuario + "', '" + password + "');";
+        String sql = "INSERT INTO usuarios (id, nombre_apellido, nombre_usuario, password) VALUES (null, '" + nombre + "', '" + usuario + "', '" + contraseña + "');";
         
         System.out.println(sql);
         
@@ -244,8 +249,8 @@ public class CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JPasswordField pwCrear;
+    private javax.swing.JTextField txtNombreC;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -202,9 +202,10 @@ public class ActualizarProducto extends javax.swing.JInternalFrame {
                 Statement st = cnx.createStatement();
                 // Insertar en la base de datos
                 int resultado = st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(rootPane, "Producto creado con exito");
+                JOptionPane.showMessageDialog(rootPane, "Producto actualizado con exito");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, "Error al crear Producto", "Importante", JOptionPane.ERROR_MESSAGE);
+             ex.printStackTrace();  // Mostrar detalles del error en consola
+                JOptionPane.showMessageDialog(rootPane, "Error al crear usuario: " + ex.getMessage(), "Importante", JOptionPane.ERROR_MESSAGE);
             }
     }//GEN-LAST:event_btnActualizarActionPerformed
 

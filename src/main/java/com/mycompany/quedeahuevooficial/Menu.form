@@ -95,7 +95,19 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="venta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Venta"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jMenuItem4"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="Factura">
           <Properties>
             <Property name="text" type="java.lang.String" value="Factura"/>
           </Properties>

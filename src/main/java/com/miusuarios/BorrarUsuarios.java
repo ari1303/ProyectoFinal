@@ -4,6 +4,11 @@
  */
 package com.miusuarios;
 
+import com.back.BaseDatos;
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aries
@@ -109,10 +114,10 @@ public class BorrarUsuarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-         BaseDatos bd = new BaseDatos();
+        BaseDatos bd = new BaseDatos();
         Connection cnx = bd.getConexion();
         
-        int codigo = Integer.parseInt(txtCodigoProducto.getText());
+        int codigo = Integer.parseInt(txtCodigoUsuario.getText());
         String sql = "Delete From usuario Where idusuario = "+ codigo;
         System.out.println(sql);
         

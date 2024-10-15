@@ -55,7 +55,9 @@ public class Menu extends javax.swing.JFrame {
         miCrearUsuario = new javax.swing.JMenuItem();
         miBorrarUsuario = new javax.swing.JMenuItem();
         miActualizarUsuario = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        venta = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        Factura = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
@@ -141,12 +143,19 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jmanuitem);
 
-        jMenu3.setText("Factura");
+        venta.setText("Venta");
+
+        jMenuItem4.setText("jMenuItem4");
+        venta.add(jMenuItem4);
+
+        jMenuBar1.add(venta);
+
+        Factura.setText("Factura");
 
         jMenuItem2.setText("jMenuItem2");
-        jMenu3.add(jMenuItem2);
+        Factura.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(Factura);
 
         setJMenuBar(jMenuBar1);
 
@@ -247,12 +256,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Factura;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu jmanuitem;
     private javax.swing.JMenuItem miActualizarPro;
     private javax.swing.JMenuItem miActualizarUsuario;
@@ -262,5 +272,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem miCrearUsuario;
     private javax.swing.JMenuItem miLista;
     private javax.swing.JMenuItem miListaUsuarios;
+    private javax.swing.JMenu venta;
     // End of variables declaration//GEN-END:variables
 }

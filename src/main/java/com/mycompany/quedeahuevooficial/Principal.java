@@ -4,6 +4,12 @@
  */
 package com.mycompany.quedeahuevooficial;
 
+import com.back.BaseDatos;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aries
@@ -152,7 +158,7 @@ public class Principal extends javax.swing.JFrame {
         
         String usuario = txtUsuario.getText();
         String contraseña = new String(pwContraseñaInicio.getPassword());
-        String sql = "SELECT * FROM usuario WHERE usuario = '" + usuario + "' AND password = '" + contraseña + "'";
+        String sql = "SELECT * FROM usuario WHERE nombre_usuario = '" + usuario + "' AND password = '" + contraseña + "'";
         System.out.println(sql);
         
         try {

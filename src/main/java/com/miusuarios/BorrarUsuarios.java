@@ -109,7 +109,22 @@ public class BorrarUsuarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+         BaseDatos bd = new BaseDatos();
+        Connection cnx = bd.getConexion();
         
+        int codigo = Integer.parseInt(txtCodigoProducto.getText());
+        String sql = "Delete From usuario Where idusuario = "+ codigo;
+        System.out.println(sql);
+        
+        try{
+             Statement st = cnx.createStatement();
+                            //inserta en la base de datos
+            int resultado = st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(rootPane, "Usuario ELIMINADO exitosamente");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(rootPane, "Error al ELIMINAR usuario","Importante",JOptionPane.ERROR_MESSAGE);
+    
+        }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
 

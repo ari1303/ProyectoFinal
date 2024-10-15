@@ -1,5 +1,6 @@
 package com.mycompany.quedeahuevooficial;
 
+import com.menuitem.CrearProducto;
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 
@@ -39,7 +40,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        miCrearProducto = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -49,8 +50,13 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu1.setText("Producto");
 
-        jMenuItem1.setText("Crear un Producto");
-        jMenu1.add(jMenuItem1);
+        miCrearProducto.setText("Crear un Producto");
+        miCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCrearProductoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miCrearProducto);
 
         jMenuItem2.setText("Actualizar");
         jMenu1.add(jMenuItem2);
@@ -81,6 +87,12 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void miCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCrearProductoActionPerformed
+        CrearProducto crearproducto = new CrearProducto();
+        DesktopPane_menu.add(crearproducto);
+        crearproducto.setVisible(true);
+    }//GEN-LAST:event_miCrearProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,9 +133,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem miCrearProducto;
     // End of variables declaration//GEN-END:variables
 }

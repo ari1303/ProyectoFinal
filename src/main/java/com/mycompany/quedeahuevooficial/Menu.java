@@ -1,6 +1,7 @@
 package com.mycompany.quedeahuevooficial;
 
 import com.menuitem.ActualizarProducto;
+import com.menuitem.BorrarProducto;
 import com.menuitem.CrearProducto;
 import com.menuitem.ListaProductos;
 import java.awt.Dimension;
@@ -154,7 +155,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_miListaActionPerformed
 
     private void miBorrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBorrarProActionPerformed
-        // TODO add your handling code here:
+        BorrarProducto miborrarpro = new BorrarProducto();
+        DesktopPane_menu.add(miborrarpro);
+        miborrarpro.setVisible(true);
     }//GEN-LAST:event_miBorrarProActionPerformed
 
     /**

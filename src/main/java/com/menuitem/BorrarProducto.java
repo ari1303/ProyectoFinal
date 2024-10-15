@@ -4,6 +4,11 @@
  */
 package com.menuitem;
 
+import com.back.BaseDatos;
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aries
@@ -111,7 +116,7 @@ public class BorrarProducto extends javax.swing.JInternalFrame {
         BaseDatos bd = new BaseDatos();
         Connection cnx = bd.getConexion();
         
-        int codigo = Integer.parseInt(txtCodigo.getText());
+        int codigo = Integer.parseInt(txtCodigoProducto.getText());
         String sql = "Delete From productos Where ideproducto = "+ codigo;
         System.out.println(sql);
         

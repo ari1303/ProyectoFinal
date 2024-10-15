@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package com.menuitem;
 
 /**
@@ -173,7 +169,34 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+            BaseDatos bd = new BaseDatos();
+            // cnx: objeto que representa la conexión a la BD
+            Connection cnx = bd.getConexion();
+            
+            // Obtenemos los datos de los textField
+            String nombre = txtNombreProducto.getText();
+            int codigo = Int.parseInt(txtCodigo.getText());
+            float precio = Float.parseFloat(txtPrecio.getText());
+            int existencia = Int.parseInt(txtExistencia.getText());
+            String calificacion = txtCalificacionPro.getText();
+            String marca = txtMarca.getText();
+            
+            // Creamos la sentencia SQL
+            String sql = "INSERT INTO productos VALUES (null, '" + nombre + "', " + codigo + ", " + precio + ", " + existencia + ", '" + calificacion + "', '" + marca + "');";
+            
+            System.out.println(sql);
+            
+            try {
+                Statement st = cnx.createStatement();
+                // Insertar en la base de datos
+                int resultado = st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(rootPane, "Producto creado con exito");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane, "Error al crear Producto", "Importante", JOptionPane.ERROR_MESSAGE);
+            }
+            
+
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

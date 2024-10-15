@@ -183,7 +183,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         String contraseña = new String(pwCrear.getPassword());
         
         // Creamos la sentencia SQL
-        String sql = "INSERT INTO usuarios (id, nombre_apellido, nombre_usuario, password) VALUES (null, '" + nombre + "', '" + usuario + "', '" + contraseña + "');";
+        String sql = "INSERT INTO usuario (id, nombre_apellido, nombre_usuario, password) VALUES (null, '" + nombre + "', '" + usuario + "', '" + contraseña + "');";
         
         System.out.println(sql);
         

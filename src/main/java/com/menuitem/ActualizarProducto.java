@@ -182,31 +182,31 @@ public class ActualizarProducto extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         BaseDatos bd = new BaseDatos();
-            // cnx: objeto que representa la conexión a la BD
-            Connection cnx = bd.getConexion();
-            
-            // Obtenemos los datos de los textField
-            String nombre = txtNombreProducto.getText();
-            int codigo = Integer.parseInt(txtCodigoP.getText());
-            float precio = Float.parseFloat(txtPrecio.getText());
-            int existencia = Integer.parseInt(txtExistencia.getText());
-            String calificacion = txtCalificacioProd.getText();
-            String marca = txtMarca.getText();
-            
-            // Creamos la sentencia SQL
-            String sql = "Update productos Set null, '" + nombre + "', " + precio + ", " + existencia + ", '" + calificacion + "', '" + marca + "' Where codigo = " + codigo;
-            
-            System.out.println(sql);
-            
-            try {
-                Statement st = cnx.createStatement();
-                // Insertar en la base de datos
-                int resultado = st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(rootPane, "Producto actualizado con exito");
-            } catch (Exception ex) {
-             ex.printStackTrace();  // Mostrar detalles del error en consola
-                JOptionPane.showMessageDialog(rootPane, "Error al crear usuario: " + ex.getMessage(), "Importante", JOptionPane.ERROR_MESSAGE);
-            }
+        // cnx: objeto que representa la conexión a la BD
+        Connection cnx = bd.getConexion();
+
+        // Obtenemos los datos de los textField
+        int codigo = Integer.parseInt(txtCodigoP.getText());
+        String nombre = txtNombreProducto.getText();
+        float precio = Float.parseFloat(txtPrecio.getText());
+        int existencia = Integer.parseInt(txtExistencia.getText());
+        String calificacion = txtCalificacioProd.getText();
+        String marca = txtMarca.getText();
+
+        // Creamos la sentencia SQL
+        String sql = "Update productos Set nombre_producto ='" + nombre + "',precio = " + precio + ", existencia = " + existencia + ", calificacion_producto = '" + calificacion + "', marca ='" + marca + "' Where codigo = " + codigo;
+
+        System.out.println(sql);
+
+        try {
+            Statement st = cnx.createStatement();
+            // Insertar en la base de datos
+            int resultado = st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(rootPane, "Producto actualizado con exito");
+        } catch (Exception ex) {
+         ex.printStackTrace();  // Mostrar detalles del error en consola
+            JOptionPane.showMessageDialog(rootPane, "Error al actualizar: " + ex.getMessage(), "Importante", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
 

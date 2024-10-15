@@ -2,7 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package com.menuitem;
+package com.miusuarios;
+
+import com.back.BaseDatos;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,7 +39,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbaListaUsuarios = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnListaUsuarios = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(4, 60, 83));
 
@@ -79,7 +87,12 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Cargar");
+        btnListaUsuarios.setText("Cargar");
+        btnListaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaUsuariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,8 +107,8 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton1)))
+                        .addGap(99, 99, 99)
+                        .addComponent(btnListaUsuarios)))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,9 +118,9 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(btnListaUsuarios)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,9 +139,43 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnListaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaUsuariosActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tbaListaUsuarios.getModel();
+            modelo.setRowCount(0); // Limpiar filas existentes
+
+            BaseDatos bd = new BaseDatos();
+            Connection cnx = bd.getConexion();
+
+            String sql = "SELECT * FROM usuario";  // Consulta a la BD
+
+            try {
+                Statement st = cnx.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+
+                // Recorrer ResultSet y agregar filas
+                while (rs.next()) {
+                    int idusuario = rs.getInt("idusuario");
+                    String nombre = rs.getString("nombre_apellido");
+                    String usuario = rs.getString("nombre_usuario");
+                    String contraseña = rs.getString("password");
+                    
+
+                    // Agregar la fila al modelo de la tabla
+                    modelo.addRow(new Object[]{idusuario, nombre, usuario, contraseña,});
+                }
+
+                rs.close();
+                st.close();
+                cnx.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al cargar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+    }//GEN-LAST:event_btnListaUsuariosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnListaUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

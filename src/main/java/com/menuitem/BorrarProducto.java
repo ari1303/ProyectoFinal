@@ -117,7 +117,7 @@ public class BorrarProducto extends javax.swing.JInternalFrame {
         Connection cnx = bd.getConexion();
         
         int codigo = Integer.parseInt(txtCodigoProducto.getText());
-        String sql = "Delete From productos Where ideproducto = "+ codigo;
+        String sql = "Delete From productos Where codigo = "+ codigo;
         System.out.println(sql);
         
         try{

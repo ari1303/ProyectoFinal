@@ -60,8 +60,6 @@ public class Menu extends javax.swing.JFrame {
         miActualizarUsuario = new javax.swing.JMenuItem();
         venta = new javax.swing.JMenu();
         miVenta = new javax.swing.JMenuItem();
-        Factura = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -158,13 +156,6 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(venta);
 
-        Factura.setText("Factura");
-
-        jMenuItem2.setText("jMenuItem2");
-        Factura.add(jMenuItem2);
-
-        jMenuBar1.add(Factura);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -233,9 +224,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_miActualizarUsuarioActionPerformed
 
     private void miVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVentaActionPerformed
-        Venta venta = new Venta();
-        DesktopPane_menu.add(venta);
-        venta.setVisible(true);
+        Venta ventav = new Venta();
+        DesktopPane_menu.add(ventav);
+        ventav.setVisible(true);
     }//GEN-LAST:event_miVentaActionPerformed
 
     /**
@@ -274,11 +265,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Factura;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmanuitem;
     private javax.swing.JMenuItem miActualizarPro;

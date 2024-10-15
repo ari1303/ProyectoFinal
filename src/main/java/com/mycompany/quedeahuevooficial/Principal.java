@@ -93,6 +93,11 @@ public class Principal extends javax.swing.JFrame {
         btnCrearUsuario.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         btnCrearUsuario.setText("Crear Usuario");
         btnCrearUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,6 +179,10 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al validar el login", "Importante", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

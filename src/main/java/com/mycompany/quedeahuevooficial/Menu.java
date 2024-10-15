@@ -1,5 +1,6 @@
 package com.mycompany.quedeahuevooficial;
 
+import com.menuitem.ActualizarProducto;
 import com.menuitem.CrearProducto;
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
@@ -38,29 +39,15 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         miCrearProducto = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        miActualizarPro = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(4, 137, 169));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 677, Short.MAX_VALUE)
-        );
 
         jMenu1.setText("Producto");
 
@@ -72,8 +59,13 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(miCrearProducto);
 
-        jMenuItem2.setText("Actualizar");
-        jMenu1.add(jMenuItem2);
+        miActualizarPro.setText("Actualizar");
+        miActualizarPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miActualizarProActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miActualizarPro);
 
         jMenuItem3.setText("Borrar");
         jMenu1.add(jMenuItem3);
@@ -92,11 +84,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 1200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
         );
 
         pack();
@@ -107,6 +99,12 @@ public class Menu extends javax.swing.JFrame {
         DesktopPane_menu.add(crearproducto);
         crearproducto.setVisible(true);
     }//GEN-LAST:event_miCrearProductoActionPerformed
+
+    private void miActualizarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miActualizarProActionPerformed
+        ActualizarProducto actualizarproducto = new ActualizarProducto();
+        DesktopPane_menu.add(actualizarproducto);
+        actualizarproducto.setVisible(true);
+    }//GEN-LAST:event_miActualizarProActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +145,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem miActualizarPro;
     private javax.swing.JMenuItem miCrearProducto;
     // End of variables declaration//GEN-END:variables
 }

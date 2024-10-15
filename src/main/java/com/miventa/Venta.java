@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package com.miventa;
 
 import com.back.BaseDatos;
@@ -72,12 +68,12 @@ public class Venta extends javax.swing.JInternalFrame {
         BaseDatos bd = new BaseDatos();
         Connection cnx = bd.getConexion();
 
-        String sql = "SELECT idproducto, nombre FROM productos";
+        String sql = "SELECT idproductos, nombre_producto FROM productos";
 
         try (Statement st = cnx.createStatement(); ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
-                int idProducto = rs.getInt("idproducto");
-                String nombre = rs.getString("nombre");
+                int idProducto = rs.getInt("idproductos");
+                String nombre = rs.getString("nombre_producto");
                 Producto productoSeleccionado = (Producto) cmbProductos.getSelectedItem();            }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -135,6 +131,11 @@ public class Venta extends javax.swing.JInternalFrame {
 
         btnImprimir.setFont(new java.awt.Font("Segoe UI Emoji", 3, 14)); // NOI18N
         btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,18 +160,19 @@ public class Venta extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btnVender)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVender)
+                        .addGap(33, 33, 33)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTotal)
+                            .addComponent(txtCantidad))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -198,13 +200,13 @@ public class Venta extends javax.swing.JInternalFrame {
                             .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnImprimir)
-                                .addGap(34, 34, 34))
-                            .addComponent(btnVender, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnImprimir)
+                            .addComponent(btnVender))
+                        .addContainerGap(241, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(51, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,8 +230,8 @@ public class Venta extends javax.swing.JInternalFrame {
         BaseDatos bd = new BaseDatos();
         Connection cnx = bd.getConexion();
 
-        String sqlProducto = "SELECT precio, existencia FROM productos WHERE idproducto = ?";
-        String sqlActualizar = "UPDATE productos SET existencia = existencia - ? WHERE idproducto = ?";
+        String sqlProducto = "SELECT precio, existencia FROM productos WHERE idproductos = ?";
+        String sqlActualizar = "UPDATE productos SET existencia = existencia - ? WHERE idproductos = ?";
 
         try {
             PreparedStatement psProducto = cnx.prepareStatement(sqlProducto);
@@ -263,6 +265,21 @@ public class Venta extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error al realizar la venta: " + ex.getMessage());
         }
     }//GEN-LAST:event_btnVenderActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        try {
+        boolean printed = areaFactura.print();  // Llama al método de impresión
+        if (printed) {
+            JOptionPane.showMessageDialog(this, "Impresión realizada con éxito.");
+        } else {
+            JOptionPane.showMessageDialog(this, "La impresión fue cancelada.");
+        }
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al imprimir: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

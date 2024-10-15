@@ -49,6 +49,7 @@ public class Menu extends javax.swing.JFrame {
         miLista = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         miListaUsuarios = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -80,6 +81,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.add(miActualizarPro);
 
         miBorrarPro.setText("Borrar");
+        miBorrarPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miBorrarProActionPerformed(evt);
+            }
+        });
         jMenu1.add(miBorrarPro);
 
         miLista.setText("Listar");
@@ -96,6 +102,9 @@ public class Menu extends javax.swing.JFrame {
 
         miListaUsuarios.setText("Lista de Usuarios");
         jMenu2.add(miListaUsuarios);
+
+        jMenuItem3.setText("jMenuItem3");
+        jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
 
@@ -144,6 +153,10 @@ public class Menu extends javax.swing.JFrame {
         listaproductos.setVisible(true);
     }//GEN-LAST:event_miListaActionPerformed
 
+    private void miBorrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBorrarProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miBorrarProActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,6 +199,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem miActualizarPro;
     private javax.swing.JMenuItem miBorrarPro;
     private javax.swing.JMenuItem miCrearProducto;

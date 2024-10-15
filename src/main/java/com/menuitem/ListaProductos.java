@@ -33,6 +33,9 @@ public class ListaProductos extends javax.swing.JInternalFrame {
         tbaListaProductos = new javax.swing.JTable();
         btnCargarDatos = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+
         jPanel1.setBackground(new java.awt.Color(4, 60, 83));
 
         jLabel1.setFont(new java.awt.Font("Magneto", 1, 24)); // NOI18N

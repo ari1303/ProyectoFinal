@@ -1,8 +1,6 @@
 package com.menuitem;
 import com.back.BaseDatos;
-import java.sgl.*;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -138,38 +136,38 @@ public class ListaProductos extends javax.swing.JInternalFrame {
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
        
           
-           DefaultTableModel modelo = (DefaultTableModel) ListaProductos.getModel();
-                modelo.setRowCount(0); // Limpiar filas existentes
-            
-                BaseDatos bd = new BaseDatos();
-                Connection cnx = bd.getConexion();
-            
-                String sql = "SELECT * FROM productos";  // Consulta a la BD
-            
-                try {
-                    Statement st = cnx.createStatement();
-                    ResultSet rs = st.executeQuery(sql);
-            
-                    // Recorrer ResultSet y agregar filas
-                    while (rs.next()) {
-                        int codigo = rs.getInt("codigo");
-                        String nombre = rs.getString("nombre");
-                        float precio = rs.getFloat("precio");
-                        int existencia = rs.getInt("existencia");
-                        String calificacion = rs.getString("calificacion");
-                        String marca = rs.getString("marca");
-            
-                        // Agregar la fila al modelo de la tabla
-                        modelo.addRow(new Object[]{codigo, nombre, precio, existencia, calificacion, marca});
-                    }
-            
-                    rs.close();
-                    st.close();
-                    cnx.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(this, "Error al cargar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            DefaultTableModel modelo = (DefaultTableModel) tbaListaProductos.getModel();
+            modelo.setRowCount(0); // Limpiar filas existentes
+
+            BaseDatos bd = new BaseDatos();
+            Connection cnx = bd.getConexion();
+
+            String sql = "SELECT * FROM productos";  // Consulta a la BD
+
+            try {
+                Statement st = cnx.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+
+                // Recorrer ResultSet y agregar filas
+                while (rs.next()) {
+                    int codigo = rs.getInt("codigo");
+                    String nombre = rs.getString("nombre");
+                    float precio = rs.getFloat("precio");
+                    int existencia = rs.getInt("existencia");
+                    String calificacion = rs.getString("calificacion");
+                    String marca = rs.getString("marca");
+
+                    // Agregar la fila al modelo de la tabla
+                    modelo.addRow(new Object[]{codigo, nombre, precio, existencia, calificacion, marca});
                 }
+
+                rs.close();
+                st.close();
+                cnx.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error al cargar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
 

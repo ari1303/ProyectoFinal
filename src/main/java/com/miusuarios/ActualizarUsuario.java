@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package com.miusuarios;
 
 /**
@@ -61,6 +57,11 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
         btnActualizarUsuario.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
         btnActualizarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizarUsuario.setText("Actualizar");
+        btnActualizarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,6 +128,10 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnActualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

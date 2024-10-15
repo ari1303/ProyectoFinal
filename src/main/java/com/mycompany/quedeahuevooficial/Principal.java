@@ -147,7 +147,26 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        // TODO add your handling code here:
+        BaseDatos bd = new BaseDatos();
+        Connection cnx = bd.getConexion();
+        
+        String usuario = txtUsuario.getText();
+        String contraseña = new String(pwContraseñaInicio.getPassword());
+        String sql = "SELECT * FROM usuario WHERE usuario = '" + usuario + "' AND password = '" + contraseña + "'";
+        System.out.println(sql);
+        
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet resultado = st.executeQuery(sql);
+        
+            if (resultado.next()) {  // Verifica si se encontró una coincidencia
+                JOptionPane.showMessageDialog(rootPane, "¡Login exitoso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Error al validar el login", "Importante", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     /**

@@ -2,6 +2,7 @@ package com.mycompany.quedeahuevooficial;
 
 import com.menuitem.ActualizarProducto;
 import com.menuitem.CrearProducto;
+import com.menuitem.ListaProductos;
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 
@@ -45,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
         miCrearProducto = new javax.swing.JMenuItem();
         miActualizarPro = new javax.swing.JMenuItem();
         miBorrarPro = new javax.swing.JMenuItem();
-        miListaPro = new javax.swing.JMenuItem();
+        miLista = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         miListaUsuarios = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -56,6 +57,11 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Producto");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         miCrearProducto.setText("Crear un Producto");
         miCrearProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -76,8 +82,13 @@ public class Menu extends javax.swing.JFrame {
         miBorrarPro.setText("Borrar");
         jMenu1.add(miBorrarPro);
 
-        miListaPro.setText("Listar");
-        jMenu1.add(miListaPro);
+        miLista.setText("Listar");
+        miLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miLista);
 
         jMenuBar1.add(jMenu1);
 
@@ -122,6 +133,16 @@ public class Menu extends javax.swing.JFrame {
         DesktopPane_menu.add(actualizarproducto);
         actualizarproducto.setVisible(true);
     }//GEN-LAST:event_miActualizarProActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+       
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void miListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListaActionPerformed
+        ListaProductos listaproductos = new ListaProductos();
+        DesktopPane_menu.add(listaproductos);
+        listaproductos.setVisible(true);
+    }//GEN-LAST:event_miListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,7 +189,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem miActualizarPro;
     private javax.swing.JMenuItem miBorrarPro;
     private javax.swing.JMenuItem miCrearProducto;
-    private javax.swing.JMenuItem miListaPro;
+    private javax.swing.JMenuItem miLista;
     private javax.swing.JMenuItem miListaUsuarios;
     // End of variables declaration//GEN-END:variables
 }

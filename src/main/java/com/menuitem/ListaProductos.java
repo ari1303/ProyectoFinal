@@ -150,15 +150,16 @@ public class ListaProductos extends javax.swing.JInternalFrame {
 
                 // Recorrer ResultSet y agregar filas
                 while (rs.next()) {
+                    int idproducto = rs.getInt("idproducto");
+                    String nombre = rs.getString("nombre_producto");
                     int codigo = rs.getInt("codigo");
-                    String nombre = rs.getString("nombre");
                     float precio = rs.getFloat("precio");
                     int existencia = rs.getInt("existencia");
-                    String calificacion = rs.getString("calificacion");
+                    String calificacion = rs.getString("calificacion_producto");
                     String marca = rs.getString("marca");
 
                     // Agregar la fila al modelo de la tabla
-                    modelo.addRow(new Object[]{codigo, nombre, precio, existencia, calificacion, marca});
+                    modelo.addRow(new Object[]{idproducto, codigo, nombre, precio, existencia, calificacion, marca});
                 }
 
                 rs.close();

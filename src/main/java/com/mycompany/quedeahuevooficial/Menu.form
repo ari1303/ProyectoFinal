@@ -13,6 +13,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Producto"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="miCrearProducto">
               <Properties>
@@ -35,10 +38,13 @@
                 <Property name="text" type="java.lang.String" value="Borrar"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="miListaPro">
+            <MenuItem class="javax.swing.JMenuItem" name="miLista">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miListaActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

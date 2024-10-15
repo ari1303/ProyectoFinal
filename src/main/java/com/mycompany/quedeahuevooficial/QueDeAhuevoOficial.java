@@ -1,8 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 
 package com.mycompany.quedeahuevooficial;
+
+import com.back.BaseDatos;
+import java.sql.Connection;
 
 /**
  *

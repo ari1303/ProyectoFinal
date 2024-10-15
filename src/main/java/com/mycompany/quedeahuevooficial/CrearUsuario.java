@@ -183,7 +183,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         String contraseña = new String(pwCrear.getPassword());
         
         // Creamos la sentencia SQL
-        String sql = "INSERT INTO usuario (idusuario, nombre_apellido, nombre_usuario, password) VALUES (null, '" + nombre + "', '" + usuario + "', '" + contraseña + "');";
+        String sql = "INSERT INTO usuario VALUES (null, '" + nombre + "', '" + usuario + "', '" + contraseña + "');";
         
         System.out.println(sql);
         
@@ -193,7 +193,8 @@ public class CrearUsuario extends javax.swing.JFrame {
             int resultado = st.executeUpdate(sql);
             JOptionPane.showMessageDialog(rootPane, "Usuario creado exitosamente");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, "Error al crear usuario", "Importante", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();  // Mostrar detalles del error en consola
+            JOptionPane.showMessageDialog(rootPane, "Error al crear usuario: " + ex.getMessage(), "Importante", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 

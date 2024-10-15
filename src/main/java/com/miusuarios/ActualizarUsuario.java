@@ -130,7 +130,31 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarUsuarioActionPerformed
-        // TODO add your handling code here:
+        BaseDatos bd = new BaseDatos();
+        // cnx: objeto que representa la conexión a la BD
+        Connection cnx = bd.getConexion();
+
+        // Obtenemos los datos de los textField
+        int codigo = Integer.parseInt(txtCodigoP.getText());
+        String nombre = txtNombre.getText();
+        int existencia = Integer.parseInt(txtExistencia.getText());
+        String usuario = txtUsuario.getText();
+        String contraseña = new String(pwNuevo.getPassword);
+
+        // Creamos la sentencia SQL
+        String sql = "Update productos Set nombre_apellido ='" + nombre + "', nombre_usuario = '" + usuario + "', password ='" + contraseña + "' Where idusuario = " + codigo;
+
+        System.out.println(sql);
+
+        try {
+            Statement st = cnx.createStatement();
+            // Insertar en la base de datos
+            int resultado = st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(rootPane, "Producto actualizado con exito");
+        } catch (Exception ex) {
+         ex.printStackTrace();  // Mostrar detalles del error en consola
+            JOptionPane.showMessageDialog(rootPane, "Error al actualizar: " + ex.getMessage(), "Importante", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnActualizarUsuarioActionPerformed
 
 

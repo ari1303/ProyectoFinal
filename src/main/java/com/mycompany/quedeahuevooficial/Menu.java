@@ -4,7 +4,10 @@ import com.menuitem.ActualizarProducto;
 import com.menuitem.BorrarProducto;
 import com.menuitem.CrearProducto;
 import com.menuitem.ListaProductos;
+import com.miusuarios.ActualizarUsuario;
+import com.miusuarios.BorrarUsuarios;
 import com.miusuarios.ListaUsuarios;
+import com.miventa.Venta;
 import java.awt.Dimension;
 import javax.swing.JDesktopPane;
 
@@ -56,7 +59,7 @@ public class Menu extends javax.swing.JFrame {
         miBorrarUsuario = new javax.swing.JMenuItem();
         miActualizarUsuario = new javax.swing.JMenuItem();
         venta = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        miVenta = new javax.swing.JMenuItem();
         Factura = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -145,8 +148,13 @@ public class Menu extends javax.swing.JFrame {
 
         venta.setText("Venta");
 
-        jMenuItem4.setText("jMenuItem4");
-        venta.add(jMenuItem4);
+        miVenta.setText("Venta");
+        miVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miVentaActionPerformed(evt);
+            }
+        });
+        venta.add(miVenta);
 
         jMenuBar1.add(venta);
 
@@ -213,12 +221,22 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_miCrearUsuarioActionPerformed
 
     private void miBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBorrarUsuarioActionPerformed
-        // TODO add your handling code here:
+        BorrarUsuarios borrarusuarios = new BorrarUsuarios();
+        DesktopPane_menu.add(borrarusuarios);
+        borrarusuarios.setVisible(true);
     }//GEN-LAST:event_miBorrarUsuarioActionPerformed
 
     private void miActualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miActualizarUsuarioActionPerformed
-        // TODO add your handling code here:
+        ActualizarUsuario actualizarusuario = new ActualizarUsuario();
+        DesktopPane_menu.add(actualizarusuario);
+        actualizarusuario.setVisible(true);
     }//GEN-LAST:event_miActualizarUsuarioActionPerformed
+
+    private void miVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVentaActionPerformed
+        Venta venta = new Venta();
+        DesktopPane_menu.add(venta);
+        venta.setVisible(true);
+    }//GEN-LAST:event_miVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,7 +280,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu jmanuitem;
     private javax.swing.JMenuItem miActualizarPro;
     private javax.swing.JMenuItem miActualizarUsuario;
@@ -272,6 +289,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem miCrearUsuario;
     private javax.swing.JMenuItem miLista;
     private javax.swing.JMenuItem miListaUsuarios;
+    private javax.swing.JMenuItem miVenta;
     private javax.swing.JMenu venta;
     // End of variables declaration//GEN-END:variables
 }

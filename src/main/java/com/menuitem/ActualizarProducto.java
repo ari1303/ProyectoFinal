@@ -1,20 +1,19 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ */
 package com.menuitem;
-
-import com.back.BaseDatos;
-import java.sql.Connection;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author aries
  */
-public class CrearProducto extends javax.swing.JInternalFrame {
+public class ActualizarProducto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CrearProducto
      */
-    public CrearProducto() {
+    public ActualizarProducto() {
         initComponents();
     }
 
@@ -38,12 +37,12 @@ public class CrearProducto extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtNombreProducto = new javax.swing.JTextField();
-        txtCodigoP = new javax.swing.JTextField();
+        txtCódigo = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtExistencia = new javax.swing.JTextField();
-        txtCalificacioProd = new javax.swing.JTextField();
+        txtCalificacioPro = new javax.swing.JTextField();
         txtMarca = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -58,7 +57,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Nuevo Producto");
+        jLabel1.setText("Actualizar Producto");
 
         jLabel2.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -84,10 +83,12 @@ public class CrearProducto extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Marca:");
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -112,14 +113,14 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoP, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCalificacioProd, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCalificacioPro, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(btnGuardar)))
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,7 +135,7 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtCodigoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -146,13 +147,13 @@ public class CrearProducto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtCalificacioProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCalificacioPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
+                .addComponent(btnActualizar)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -173,40 +174,13 @@ public class CrearProducto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-            BaseDatos bd = new BaseDatos();
-            // cnx: objeto que representa la conexión a la BD
-            Connection cnx = bd.getConexion();
-            
-            // Obtenemos los datos de los textField
-            String nombre = txtNombreProducto.getText();
-            int codigo = Integer.parseInt(txtCodigoP.getText());
-            float precio = Float.parseFloat(txtPrecio.getText());
-            int existencia = Integer.parseInt(txtExistencia.getText());
-            String calificacion = txtCalificacioProd.getText();
-            String marca = txtMarca.getText();
-            
-            // Creamos la sentencia SQL
-            String sql = "INSERT INTO productos VALUES (null, '" + nombre + "', " + codigo + ", " + precio + ", " + existencia + ", '" + calificacion + "', '" + marca + "');";
-            
-            System.out.println(sql);
-            
-            try {
-                Statement st = cnx.createStatement();
-                // Insertar en la base de datos
-                int resultado = st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(rootPane, "Producto creado con exito");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, "Error al crear Producto", "Importante", JOptionPane.ERROR_MESSAGE);
-            }
-            
-
-        
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -217,8 +191,8 @@ public class CrearProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField txtCalificacioProd;
-    private javax.swing.JTextField txtCodigoP;
+    private javax.swing.JTextField txtCalificacioPro;
+    private javax.swing.JTextField txtCódigo;
     private javax.swing.JTextField txtExistencia;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtNombreProducto;

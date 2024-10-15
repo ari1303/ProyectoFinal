@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package com.menuitem;
+import java.sgl.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author aries
- */
 public class ListaProductos extends javax.swing.JInternalFrame {
 
+            Conexion conexion =Conexion.gatInstance();
     /**
      * Creates new form ListaProductos
      */
     public ListaProductos() {
         initComponents();
+       
+        
     }
 
     /**
@@ -31,6 +31,7 @@ public class ListaProductos extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbaListaProductos = new javax.swing.JTable();
+        btbGargarDatos = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(4, 60, 83));
 
@@ -43,25 +44,33 @@ public class ListaProductos extends javax.swing.JInternalFrame {
 
         tbaListaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "IdProducto", "Nombre_Producto", "Codigo", "Precio", "Existencia", "Calificaion_Producto", "Marca"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tbaListaProductos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,6 +79,13 @@ public class ListaProductos extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        btbGargarDatos.setText("Cargar Datos");
+        btbGargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btbGargarDatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,7 +98,10 @@ public class ListaProductos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(btbGargarDatos)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -92,7 +111,9 @@ public class ListaProductos extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(btbGargarDatos)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,8 +130,52 @@ public class ListaProductos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btbGargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbGargarDatosActionPerformed
+       try{
+          
+           DefaultTableModel modelo = new DefaultTableModel();
+           tbaListaProductos.setModel(modelo);
+           
+           Connection conexionMysgl =conexion.conectar();
+           PreparedStatement seleccion =conexionMysql.preparStatement("select * from productos");
+           ResultSet consulta = seleccion.executeQuery();
+           
+           ResultSetMetaData datos = consulta.getMetaData();
+           int cantidadColumnas = datos.getColumnCount();
+           
+           
+           modelo.addColumn("IdProducto");
+           modelo.addColumn("Nombre_Producto");
+           modelo.addColumn("Codigo");
+           modelo.addColumn("Precio");
+           modelo.addColumn("Existencia");
+           modelo.addColumn("Calificacio_Producto");
+           modelo.addColumn("Marca");
+           
+           //establecemos el ancho
+           int ancho []= {90,90,90};
+           for(int i = 0);i <cantidadColumnas; i++){
+           tbaListaProductos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+           
+       }
+           //cargamos datos
+           while(consulta.next()){
+           objeto arreglo[] = new object[cantidadColumnas];
+           for (int i = 0;i<cantidadColumnas; i++){
+               arreglo[i] = consulta.getObject(i + 1);   
+           }
+       modelo.assRow(arreglo);
+       }
+           
+           
+       }catch(SQLExeption error){
+        System.out.println(error);
+    }
+    }//GEN-LAST:event_btbGargarDatosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btbGargarDatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -39,13 +39,19 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         miCrearProducto = new javax.swing.JMenuItem();
         miActualizarPro = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        miBorrarPro = new javax.swing.JMenuItem();
+        miListaPro = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        miListaUsuarios = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,16 +73,27 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu1.add(miActualizarPro);
 
-        jMenuItem3.setText("Borrar");
-        jMenu1.add(jMenuItem3);
+        miBorrarPro.setText("Borrar");
+        jMenu1.add(miBorrarPro);
 
-        jMenuItem4.setText("Listar");
-        jMenu1.add(jMenuItem4);
+        miListaPro.setText("Listar");
+        jMenu1.add(miListaPro);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Usuario");
+
+        miListaUsuarios.setText("Lista de Usuarios");
+        jMenu2.add(miListaUsuarios);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Factura");
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenu3.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -144,10 +161,14 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem miActualizarPro;
+    private javax.swing.JMenuItem miBorrarPro;
     private javax.swing.JMenuItem miCrearProducto;
+    private javax.swing.JMenuItem miListaPro;
+    private javax.swing.JMenuItem miListaUsuarios;
     // End of variables declaration//GEN-END:variables
 }

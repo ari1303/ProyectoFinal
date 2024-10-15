@@ -199,7 +199,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_miListaUsuariosActionPerformed
 
     private void miCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCrearUsuarioActionPerformed
-        // TODO add your handling code here:
+        CrearUsuario crearusuario = new CrearUsuario();
+        crearusuario.setVisible(true);
     }//GEN-LAST:event_miCrearUsuarioActionPerformed
 
     private void miBorrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBorrarUsuarioActionPerformed

@@ -1,8 +1,12 @@
 package com.menuitem;
+import com.back.BaseDatos;
 import java.sgl.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ListaProductos extends javax.swing.JInternalFrame {
@@ -13,7 +17,8 @@ public class ListaProductos extends javax.swing.JInternalFrame {
      */
     public ListaProductos() {
         initComponents();
-        cargarDatosEnTabla();
+        
+        
         
     }
 
@@ -31,7 +36,7 @@ public class ListaProductos extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbaListaProductos = new javax.swing.JTable();
-        btbGargarDatos = new javax.swing.JButton();
+        btnCargarDatos = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(4, 60, 83));
 
@@ -80,10 +85,10 @@ public class ListaProductos extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        btbGargarDatos.setText("Cargar Datos");
-        btbGargarDatos.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarDatos.setText("Cargar Datos");
+        btnCargarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btbGargarDatosActionPerformed(evt);
+                btnCargarDatosActionPerformed(evt);
             }
         });
 
@@ -101,7 +106,7 @@ public class ListaProductos extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(btbGargarDatos)))
+                        .addComponent(btnCargarDatos)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -112,7 +117,7 @@ public class ListaProductos extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(btbGargarDatos)
+                .addComponent(btnCargarDatos)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -130,10 +135,10 @@ public class ListaProductos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btbGargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbGargarDatosActionPerformed
-       try{
+    private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
+       
           
-           DefaultTableModel modelo = (DefaultTableModel) tablaProductos.getModel();
+           DefaultTableModel modelo = (DefaultTableModel) ListaProductos.getModel();
                 modelo.setRowCount(0); // Limpiar filas existentes
             
                 BaseDatos bd = new BaseDatos();
@@ -165,15 +170,19 @@ public class ListaProductos extends javax.swing.JInternalFrame {
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(this, "Error al cargar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
-    }//GEN-LAST:event_btbGargarDatosActionPerformed
+    }//GEN-LAST:event_btnCargarDatosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btbGargarDatos;
+    private javax.swing.JButton btnCargarDatos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbaListaProductos;
     // End of variables declaration//GEN-END:variables
+
+    private void btnCargarDatos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -7,13 +7,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListaProductos extends javax.swing.JInternalFrame {
 
-            Conexion conexion =Conexion.gatInstance();
+            
     /**
      * Creates new form ListaProductos
      */
     public ListaProductos() {
         initComponents();
-       
+        cargarDatosEnTabla();
         
     }
 
@@ -133,44 +133,38 @@ public class ListaProductos extends javax.swing.JInternalFrame {
     private void btbGargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbGargarDatosActionPerformed
        try{
           
-           DefaultTableModel modelo = new DefaultTableModel();
-           tbaListaProductos.setModel(modelo);
-           
-           Connection conexionMysgl =conexion.conectar();
-           PreparedStatement seleccion =conexionMysql.preparStatement("select * from productos");
-           ResultSet consulta = seleccion.executeQuery();
-           
-           ResultSetMetaData datos = consulta.getMetaData();
-           int cantidadColumnas = datos.getColumnCount();
-           
-           
-           modelo.addColumn("IdProducto");
-           modelo.addColumn("Nombre_Producto");
-           modelo.addColumn("Codigo");
-           modelo.addColumn("Precio");
-           modelo.addColumn("Existencia");
-           modelo.addColumn("Calificacio_Producto");
-           modelo.addColumn("Marca");
-           
-           //establecemos el ancho
-           int ancho []= {90,90,90};
-           for(int i = 0);i <cantidadColumnas; i++){
-           tbaListaProductos.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-           
-       }
-           //cargamos datos
-           while(consulta.next()){
-           objeto arreglo[] = new object[cantidadColumnas];
-           for (int i = 0;i<cantidadColumnas; i++){
-               arreglo[i] = consulta.getObject(i + 1);   
-           }
-       modelo.assRow(arreglo);
-       }
-           
-           
-       }catch(SQLExeption error){
-        System.out.println(error);
-    }
+           DefaultTableModel modelo = (DefaultTableModel) tablaProductos.getModel();
+                modelo.setRowCount(0); // Limpiar filas existentes
+            
+                BaseDatos bd = new BaseDatos();
+                Connection cnx = bd.getConexion();
+            
+                String sql = "SELECT * FROM productos";  // Consulta a la BD
+            
+                try {
+                    Statement st = cnx.createStatement();
+                    ResultSet rs = st.executeQuery(sql);
+            
+                    // Recorrer ResultSet y agregar filas
+                    while (rs.next()) {
+                        int codigo = rs.getInt("codigo");
+                        String nombre = rs.getString("nombre");
+                        float precio = rs.getFloat("precio");
+                        int existencia = rs.getInt("existencia");
+                        String calificacion = rs.getString("calificacion");
+                        String marca = rs.getString("marca");
+            
+                        // Agregar la fila al modelo de la tabla
+                        modelo.addRow(new Object[]{codigo, nombre, precio, existencia, calificacion, marca});
+                    }
+            
+                    rs.close();
+                    st.close();
+                    cnx.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error al cargar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
     }//GEN-LAST:event_btbGargarDatosActionPerformed
 
 

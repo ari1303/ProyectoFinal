@@ -1,11 +1,15 @@
 package com.back;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author aries
  */
 public class BaseDatos {
-    
+    private Connection conexion;
     public BaseDatos(){
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");

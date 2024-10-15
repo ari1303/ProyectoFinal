@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.quedeahuevooficial;
 
 /**
@@ -172,11 +168,34 @@ public class CrearUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
-        // TODO add your handling code here:
+        BaseDatos bd = new BaseDatos();
+        // cnx: objeto que representa la conexión a la BD
+        Connection cnx = bd.getConexion();
+        
+        // Obtenemos los datos de los textField
+        String nombre = txtNombre.getText();
+        String usuario = txtUsuario.getText();
+        String contrasena = new String(pwCrear.getPassword());
+        
+        // Creamos la sentencia SQL
+        String sql = "INSERT INTO usuarios (id, nombre, usuario, contrasena) VALUES (null, '" + nombre_apellido + "', '" + nombre_usuario + "', '" + password + "');";
+        
+        System.out.println(sql);
+        
+        try {
+            Statement st = cnx.createStatement();
+            // Insertar en la base de datos
+            int resultado = st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(rootPane, "Usuario creado exitosamente");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Error al crear usuario", "Importante", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+        Principal principal = new Principal();
+        principal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
